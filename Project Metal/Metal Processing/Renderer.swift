@@ -16,31 +16,18 @@ class Renderer :NSObject {
     let commandQueue:MTLCommandQueue?
     
     var pipelineState:MTLRenderPipelineState?
-    var vertexBuffer:MTLBuffer?
-    
-  
-    var vertices:[Float] =   [
-         0,  0.5, 0,
-        -0.8, -0.5, 0,
-         0.8, -0.5, 0
-    ]
-        
+   
+    var scene:Scene?
     
     
     init(device:MTLDevice) {
         self.device = device
         self.commandQueue = device.makeCommandQueue()
         super.init()
-        buildBuffer()
         buildPipelineState()
     }
     
-    fileprivate func buildBuffer(){
-        vertexBuffer = device.makeBuffer(bytes: vertices,
-                                         length: vertices.count * MemoryLayout<Float>.size,
-                                         options: [])
-    }
-    
+ 
     
     fileprivate func buildPipelineState(){
         let library = device.makeDefaultLibrary()
@@ -65,20 +52,26 @@ class Renderer :NSObject {
 
 extension Renderer : MTKViewDelegate {
     
+
+    
     func draw(in view: MTKView) {
         guard let drawable = view.currentDrawable,
             let pipelineState = pipelineState,
             let descriptor = view.currentRenderPassDescriptor else {return}
-        let commandBuffer = commandQueue?.makeCommandBuffer()
+       
         
-        let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: descriptor)
-        commandEncoder?.setRenderPipelineState(pipelineState)
-        commandEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-        commandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
-        commandEncoder?.endEncoding()
         
-        commandBuffer?.present(drawable)
-        commandBuffer?.commit()
+        guard let commandBuffer = commandQueue?.makeCommandBuffer(),
+            let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor) else{return}
+        commandEncoder.setRenderPipelineState(pipelineState)
+        
+        let deltaTime = 1 / Float(view.preferredFramesPerSecond)
+        scene?.render(commandEncoder: commandEncoder, deltaTime: deltaTime)
+        
+        commandEncoder.endEncoding()
+        
+        commandBuffer.present(drawable)
+        commandBuffer.commit()
     }
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}

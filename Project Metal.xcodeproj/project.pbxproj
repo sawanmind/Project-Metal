@@ -13,6 +13,10 @@
 		C9B1926A2176C5A400DCFC5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B192692176C5A400DCFC5C /* ViewController.swift */; };
 		C9B1926F2176C5A500DCFC5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B1926E2176C5A500DCFC5C /* Assets.xcassets */; };
 		C9B192722176C5A500DCFC5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B192702176C5A500DCFC5C /* LaunchScreen.storyboard */; };
+		C9C6EFF121782AF600AB6A49 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C6EFF021782AF600AB6A49 /* Node.swift */; };
+		C9C6EFF321782BD900AB6A49 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C6EFF221782BD900AB6A49 /* Plane.swift */; };
+		C9C6EFF521782D3500AB6A49 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C6EFF421782D3500AB6A49 /* Scene.swift */; };
+		C9C6EFF721782E0E00AB6A49 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C6EFF621782E0E00AB6A49 /* GameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		C9B1926E2176C5A500DCFC5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9B192712176C5A500DCFC5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9B192732176C5A500DCFC5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9C6EFF021782AF600AB6A49 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		C9C6EFF221782BD900AB6A49 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		C9C6EFF421782D3500AB6A49 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		C9C6EFF621782E0E00AB6A49 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,43 @@
 		C9B192662176C5A400DCFC5C /* Project Metal */ = {
 			isa = PBXGroup;
 			children = (
+				C9C6EFEE217829A700AB6A49 /* Metal Processing */,
+				C9C6EFF821782FB300AB6A49 /* Game */,
+				C9C6EFEF217829D300AB6A49 /* Rest */,
+			);
+			path = "Project Metal";
+			sourceTree = "<group>";
+		};
+		C9C6EFEE217829A700AB6A49 /* Metal Processing */ = {
+			isa = PBXGroup;
+			children = (
+				C912AED82176CE8600D9520A /* Renderer.swift */,
+				C9C6EFF021782AF600AB6A49 /* Node.swift */,
+				C9C6EFF221782BD900AB6A49 /* Plane.swift */,
+				C9C6EFF421782D3500AB6A49 /* Scene.swift */,
+				C912AEDA2176D9EB00D9520A /* Shader.metal */,
+			);
+			path = "Metal Processing";
+			sourceTree = "<group>";
+		};
+		C9C6EFEF217829D300AB6A49 /* Rest */ = {
+			isa = PBXGroup;
+			children = (
 				C9B192672176C5A400DCFC5C /* AppDelegate.swift */,
 				C9B192692176C5A400DCFC5C /* ViewController.swift */,
-				C912AED82176CE8600D9520A /* Renderer.swift */,
-				C912AEDA2176D9EB00D9520A /* Shader.metal */,
 				C9B1926E2176C5A500DCFC5C /* Assets.xcassets */,
 				C9B192702176C5A500DCFC5C /* LaunchScreen.storyboard */,
 				C9B192732176C5A500DCFC5C /* Info.plist */,
 			);
-			path = "Project Metal";
+			path = Rest;
+			sourceTree = "<group>";
+		};
+		C9C6EFF821782FB300AB6A49 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				C9C6EFF621782E0E00AB6A49 /* GameScene.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +174,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C912AEDB2176D9EB00D9520A /* Shader.metal in Sources */,
+				C9C6EFF121782AF600AB6A49 /* Node.swift in Sources */,
+				C9C6EFF721782E0E00AB6A49 /* GameScene.swift in Sources */,
 				C9B1926A2176C5A400DCFC5C /* ViewController.swift in Sources */,
 				C912AED92176CE8600D9520A /* Renderer.swift in Sources */,
+				C9C6EFF521782D3500AB6A49 /* Scene.swift in Sources */,
+				C9C6EFF321782BD900AB6A49 /* Plane.swift in Sources */,
 				C9B192682176C5A400DCFC5C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,7 +320,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F6998RP55G;
-				INFOPLIST_FILE = "Project Metal/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Project Metal/Rest/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,7 +338,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F6998RP55G;
-				INFOPLIST_FILE = "Project Metal/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Project Metal/Rest/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

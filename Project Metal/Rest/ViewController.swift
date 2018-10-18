@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         }
         
         renderer = Renderer(device: device)
+        renderer?.scene = GameScene(device: device, size:metalView.bounds.size)
         metalView.delegate = renderer
     }
     
