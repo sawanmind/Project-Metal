@@ -18,7 +18,7 @@ class Renderer :NSObject {
     var pipelineState:MTLRenderPipelineState?
     var vertexBuffer:MTLBuffer?
     
-    //x, y , z
+  
     var vertices:[Float] =   [
          0,  0.5, 0,
         -0.8, -0.5, 0,
